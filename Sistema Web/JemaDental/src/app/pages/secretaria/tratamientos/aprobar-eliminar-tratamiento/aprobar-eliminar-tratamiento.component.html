@@ -1,0 +1,23 @@
+<div>
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <span>¿Desea eliminar el tratamiento? </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+<div *ngIf="validarborrarT == false">
+<div *ngIf="mensajeTrata" style="text-align: center; font-family: Arial;">{{mensajeTrata}}</div>
+<div class="form-container" style="text-align: center;padding-top:20px;">
+    <div style="text-align: center;">
+        <button mat-raised-button color="primary" type="button" (click)="close()">OK</button>
+    </div>
+</div>
+</div>
+<div *ngIf="validarborrarT == true">
+<div class="form-container" style="text-align: center;padding-top:20px;">
+    <div style="text-align: center;">
+        <button mat-raised-button color="primary" type="button" (click)="borrarTratamiento()">Aceptar</button>&nbsp;
+        <button mat-raised-button color="basic" type="button" (click)="close()">Cancelar</button>
+    </div>
+</div>
+</div>

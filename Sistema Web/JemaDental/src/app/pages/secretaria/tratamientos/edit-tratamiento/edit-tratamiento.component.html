@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Editar Tratamiento Medico</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<br>
+<div class="form-container" style="text-align: center">
+    <form [formGroup]="TratamientoMform" (ngSubmit)="guardarTratamientoMedico(TratamientoMform.value)">
+        <input type="hidden" formControlName="id">
+        <mat-form-field class="select">
+            <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="fecha" placeholder="Seleccione la fecha" (ngModelChange)="selectFecha($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageF()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="inputData">
+            <input matInput formControlName="cipaciente" placeholder="Cédula del Paciente" class="form-control" readonly>
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-form-field class="inputData">
+            <input matInput formControlName="namepaciente" placeholder="Nombre del Paciente" class="form-control" readonly>
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-form-field class="inputData">
+            <input matInput formControlName="seguro" placeholder="Seguro del Paciente" class="form-control" readonly>
+        </mat-form-field> &nbsp; &nbsp;
+        <mat-checkbox class="example-margin" formControlName="sseguro" (ngModelChange)="sinseguro($event)">No aplica &nbsp;</mat-checkbox>
+        <br>
+        <mat-form-field class="select">
+            <mat-select formControlName="especialidad" placeholder="Especialidad" (ngModelChange)="especialidad($event)">
+                <mat-option>Seleccione Especialidad</mat-option>
+                <mat-option *ngFor="let especialidad of especialidadSelect" value="{{especialidad}}">
+                    {{especialidad}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageE()}}</mat-error>
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-form-field class="select">
+            <mat-select formControlName="odontologo" placeholder="Odontólogo" (ngModelChange)="filterhoursbyOdonto($event)">
+                <mat-option>Seleccione el odontologo</mat-option>
+                <mat-option *ngFor="let odontologo of odontEspecialidad" [value]="odontologo">
+                    {{odontologo.nombre}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageO()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="inputData">
+            <mat-label>Tratamiento</mat-label>
+            <textarea matInput formControlName="tratamiento" class="form-control"></textarea>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageT()}}</mat-error>
+        </mat-form-field>&nbsp; &nbsp;
+
+        <mat-form-field class="inputData" *ngIf="bloquearValorPagar == false">
+            <input matInput formControlName="precio" placeholder="Valor $" class="form-control" maxlength="5" (keydown)="check($event)" readonly>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageV()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputData"  *ngIf="bloquearValorPagar == true">
+            <input matInput formControlName="precio" placeholder="Valor $" class="form-control" maxlength="5" (keydown)="check($event)">
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageV()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputData">
+            <mat-label>Observación</mat-label>
+            <textarea matInput formControlName="observacion" class="form-control"></textarea>
+            <mat-error *ngIf="TratamientoMform.invalid">{{getErrorMessageOb()}}</mat-error>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="TratamientoMform.invalid">Guardar</button>&nbsp;
+            <button mat-raised-button color="basic" type="button" (click)="close()">Cancelar</button>
+        </div>
+    </form>
+</div>

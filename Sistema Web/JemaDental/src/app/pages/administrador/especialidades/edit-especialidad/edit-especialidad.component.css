@@ -1,0 +1,17 @@
+.form-container{
+  width: 350px;
+  margin: auto;
+
+}
+.inputWidth{
+  width: 80%;
+  text-align: center;
+}
+span {
+  display:block;
+  text-align:center;
+  width:800%;
+}
+.mat-dialog-actions {
+  justify-content: center;
+}
