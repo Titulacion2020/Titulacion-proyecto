@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "478099351975",
+    "firebase_url": "https://jema-dental.firebaseio.com",
+    "project_id": "jema-dental",
+    "storage_bucket": "jema-dental.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478099351975:android:c4b6380e6c93c1a2c2ae82",
+        "android_client_info": {
+          "package_name": "com.jemadental.paciente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478099351975-phembcuj6is1e9hqh9ljckrfd635fh3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcmJxKu2c8UEfePXZbEeZT2-Ncf7JhFsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478099351975-phembcuj6is1e9hqh9ljckrfd635fh3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

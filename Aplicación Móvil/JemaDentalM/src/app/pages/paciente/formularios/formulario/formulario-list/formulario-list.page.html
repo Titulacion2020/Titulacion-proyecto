@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuP"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Solicitudes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div style="text-align: center;">
+    <ion-button color="tertiary" type="button" routerLink="/menuP/p/newFormulario">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Nuevo
+    </ion-button>
+  </div>
+  <br>
+  <ion-item-sliding *ngFor="let solicitud of solicitudes" style="color: black;">
+    <ion-item button (click)="openSolicitud(solicitud)" style="color: black;" detail="false">
+      <ion-label style="color: black;">
+        <h2 style="color:blueviolet;"><b>{{solicitud.fechaSolicitud | date:'dd/MM/yyyy HH:mm:ss'}} </b></h2>
+        <p style="color: black;">
+          <b>Tipo de Formulario: </b> {{solicitud.tipoSolicitud}}
+          <br>
+          <b>Estado: </b> <a [ngStyle]="{'color': solicitud.estadoSolicitud === 'Aprobada'? 'green' : solicitud.estadoSolicitud === 'Negada'? 'red':'black'}">{{solicitud.estadoSolicitud}} </a>
+          <br>
+          <b>Descripción: </b> {{solicitud.descripcion}}
+          <span *ngIf="solicitud.respuesta !== ''"><br>
+            <b>Respuesta: </b> {{solicitud.respuesta}}
+          </span>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end" *ngIf='solicitud.estadoSolicitud ==="Pendiente"'>
+      <ion-item-option color="light">
+        <ion-icon slot="icon-only" name="create" (click)="onEdit(solicitud)"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash" (click)="onDelete(solicitud)"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content>

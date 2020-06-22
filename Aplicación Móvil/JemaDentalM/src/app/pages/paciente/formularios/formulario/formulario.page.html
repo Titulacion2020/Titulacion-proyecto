@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuP/p/solicitudes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Nuevo Formulario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+  <br>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label><b>Tipo de Formulario</b></ion-label>
+    <ion-select [(ngModel)]="tipo">
+      <ion-select-option *ngFor="let tipo of tipoFormulario" value="{{tipo}}">{{tipo}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <br>
+  <ion-card>
+    <ion-item>
+      <ion-textarea rows="10" cols="20" placeholder="Escriba su comentario aqui..." [(ngModel)]="comentario">
+      </ion-textarea>
+    </ion-item>
+  </ion-card>
+  <br>
+  <br>
+  <ion-button color="tertiary" (click)="saveFormulario()">
+    <ion-icon slot="start" name="send"></ion-icon>
+    Enviar
+  </ion-button>
+
+</ion-content>

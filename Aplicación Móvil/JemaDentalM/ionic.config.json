@@ -1,0 +1,7 @@
+{
+  "name": "JemaDentalM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

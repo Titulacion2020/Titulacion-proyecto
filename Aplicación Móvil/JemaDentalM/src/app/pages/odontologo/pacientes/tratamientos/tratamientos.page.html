@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tratamientos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button button (click)="onCloseModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="text-align: center;" *ngIf="this.existTratamiento === false">
+    <ion-label> <b>EL PACIENTE NO TIENE TRATAMIENTOS REGISTRADOS </b></ion-label>
+  </p>
+  <ion-item  *ngFor=" let tratamiento of tratamientos" style="color: black;">
+    <p>
+      <b style="font-size: 14px; color: mediumvioletred;">Fecha: </b> <a
+        style="font-size: 14px; color: #000;">{{tratamiento.fecha | date:'dd/MM/yyyy'}}</a>
+      <br>
+      <b style="font-size: 14px;">Especialidad: </b><a
+        style="font-size: 14px; color: #000;">{{tratamiento.especialidad | titlecase}}</a>
+      <br>
+      <b style="font-size: 14px;">Odontólogo: </b> <a
+        style="font-size: 14px; color: #000;">{{tratamiento.nameodontologo | titlecase}}</a>
+      <br>
+      <b style="font-size: 14px;">Tratamiento: </b> <a
+      style="font-size: 14px; color: #000;">{{tratamiento.tratamiento | titlecase}}</a>
+    <br>
+      <b style="font-size: 14px;">Observación: </b> <a
+        style="font-size: 14px; color: #000;">{{tratamiento.observacion | titlecase}}</a>
+        <br>
+    </p>
+  </ion-item>
+</ion-content>

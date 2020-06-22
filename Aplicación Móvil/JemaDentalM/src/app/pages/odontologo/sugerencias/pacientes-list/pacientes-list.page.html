@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text=""  defaultHref="/menuO"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+     Sugerencias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+  <br>
+    <ion-button color="tertiary" routerLink="/menuO/o/newSugerencia" type="button"><ion-icon slot="start" name="add"></ion-icon>
+      Nueva Sugerencia
+    </ion-button>
+    <br>
+    <br>
+  <ion-item-sliding *ngFor="let sugerencia of sugerencias" style="color: black;" >
+    <ion-item  style="color: black;">
+      <p>
+        <a><b>{{sugerencia.fechaSugerencia | date:'dd/MM/yyyy HH:mm:ss'}}</b></a>
+        <br>
+        <br>
+        <b>Paciente: </b> {{sugerencia.nombrePaciente}}
+        <br>
+        <b>Sugerencia: </b> {{sugerencia.sugerencia}}
+        <br>
+      </p>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="light">
+        <ion-icon slot="icon-only" name="create" (click)="onEdit(sugerencia)"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" >
+        <ion-icon slot="icon-only" name="trash" (click)="onDelete(sugerencia)"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content>

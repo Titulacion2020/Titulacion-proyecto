@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuO"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Pacientes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <p style="text-align: center;" *ngIf="this.existPacientes === false">
+    <ion-label> <b>NO TIENE PACIENTES REGISTRADOS PARA HOY </b></ion-label>
+  </p>
+  <ion-item-sliding *ngFor="let paciente of pacientes" style="color: black;">
+    <ion-item button (click)="openTratamiento(paciente)" style="color: black;">
+      <ion-avatar slot="start">
+        <img src="{{paciente.foto}}">
+      </ion-avatar>
+      <p>
+        <b style="font-size: 14px;">N° de Cédula: </b> <a
+          style="font-size: 14px; color: #000;">{{paciente.cedula}}</a>
+        <br>
+        <b style="font-size: 14px;">Nombre: </b><a
+          style="font-size: 14px; color: #000;">{{paciente.nombre | titlecase}}</a>
+        <br>
+        <b style="font-size: 14px;">Historia Clínica: </b> <a
+          style="font-size: 14px; color: #000;">{{paciente.hClinica | titlecase}}</a>
+        <br>
+        <b style="font-size: 14px;">Teléfono: </b> <a
+          style="font-size: 14px; color: #000;">{{paciente.telefono}}</a>
+      </p>
+    </ion-item>
+  </ion-item-sliding>
+</ion-content>

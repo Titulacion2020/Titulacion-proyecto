@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="" style="color: white;"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;">NUEVA CUENTA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div style="text-align: center;" [formGroup]="registroForm">
+      <br>
+      <br>
+      <ion-label color="dark" style="font-size: 18px;"><b>Datos Personales</b></ion-label>
+      <br>
+      <br>
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-input [ngModelOptions]="{standalone: true}" placeholder='Número de cédula'
+            (ionChange)="buscarUsuario($event)" type="tel" maxlength="10" minlength="10" [(ngModel)]="cedula">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName='nombre' placeholder='Nombres y Apellidos' type="text"
+            [readonly]="this.pExist== false && this.oExist== false ? 'false' : 'true'">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [ngModelOptions]="{standalone: true}" placeholder='Número de teléfono'
+            [readonly]="this.pExist== false && this.oExist== false ? 'false' : 'true'" type="tel" maxlength="10"
+            [(ngModel)]="telefono">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder='Correo electrónico'
+            [readonly]="this.pExist== false && this.oExist== false ? 'false' : 'true'" type="email"
+            formControlName='email'>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder='Contraseña' id="newpass" name="newpass" formControlName="pass"
+            [type]="hideNew ? 'text' : 'password'">
+          </ion-input>
+          <ion-button style="border-radius: 20px;" shape="round" color='light' (click)="hideNew = !hideNew"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNew" type="button">
+            <ion-icon slot="icon-only" [name]="hideNew ? 'eye' : 'eye-off'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-input id="confirmpass" name="confirmpass" formControlName="confirmPass"
+            [type]="hideConfirm ? 'text' : 'password'" placeholder="Confirmar Contraseña">
+          </ion-input>
+          <ion-button style="border-radius: 20px;" shape="round" color='light' (click)="hideConfirm = !hideConfirm"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm" type="button">
+            <ion-icon slot="icon-only" [name]="hideConfirm ? 'eye' : 'eye-off'"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <br>
+      <br>
+      <ion-button color='tertiary' type="button" (click)="createAccount()">
+        Crear Cuenta
+      </ion-button>
+      <br>
+      <br>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuP"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Odontólogos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <br>
+    <ion-item>
+      <ion-label position="stacked"><b>Especialidad</b></ion-label>
+      <ion-select placeholder="Seleccione la especialidad" (ionChange)="especialidad()" [(ngModel)]="espeSelected">
+        <ion-select-option *ngFor="let especialidad of especialidadService.arrayEspe" value="{{especialidad.nombre}}">
+          {{especialidad.nombre  | titlecase}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <br>
+    <ion-item *ngFor="let odontologo of odontEspecialidad; let i = index" style="color: black;">
+      <ion-thumbnail slot="start">
+        <img src="{{odontologo.foto}}">
+      </ion-thumbnail>
+      <p>
+        <b style="font-size: 14px;">Nombre: </b><a
+          style="font-size: 14px; color: #000;">{{odontologo.nombre | titlecase}}</a>
+        <br>
+        <b style="font-size: 14px;">Especialidad: </b> <a
+          style="font-size: 14px; color: #000;">{{odontologo.especialidad | titlecase}}</a>
+        <br>
+        <b style="font-size: 14px;">Días de atención:</b> <a style="font-size: 14px; color: #000;"
+          *ngFor="let horario of odontologo.horas"> {{horario.dia | titlecase}},</a>
+        <br>
+        <b style="font-size: 14px;">Hora: </b> <a
+          style="font-size: 14px; color: #000;">{{odontologo.horas[0].horaInicio}} -
+          {{odontologo.horas[0].horaFin}}</a>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

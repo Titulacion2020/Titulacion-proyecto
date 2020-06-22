@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuP/p/citasList"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Editar Cita
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+  <br>
+  <br>
+  <form [formGroup]="CitaMform" (ngSubmit)="guardarCitaMedica(CitaMform.value)">
+    <ion-input type="hidden" formControlName="id"></ion-input>
+    <ion-item>
+      <ion-label position="stacked"><b>Nombre del Paciente:</b></ion-label>
+      <ion-input readonly formControlName="namepaciente"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label position="stacked"> <b>Odontólogo</b></ion-label>
+      <ion-select (ngModelChange)="filterhoursbyOdonto($event)" formControlName="odontologo">
+        <ion-select-option *ngFor="let odontologo of odontEspecialidad" [value]="odontologo"> {{odontologo.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label><b>Fecha de la cita:</b></ion-label>
+      <ion-datetime min="{{minDate | date: 'yyyy-MM-dd'}}" formControlName="fecha" doneText="Seleccionar"
+        cancelText="Cancelar" (ngModelChange)="selectFecha($event)"></ion-datetime>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label><b>Hora:</b></ion-label>
+      <ion-select formControlName="hora">
+        <ion-select-option *ngFor="let hora of horariobyOdontologoList" value="{{hora}}" selected> {{hora}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>  
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <ion-button color="tertiary" type="submit">
+      <ion-icon slot="start" name="refresh"></ion-icon>
+       Actualizar
+    </ion-button>
+  </form>
+
+</ion-content>

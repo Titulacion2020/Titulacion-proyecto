@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color='tertiary'>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="text-align: center;">
+  <ion-img src="./assets/logo.jpg"></ion-img>
+  <br>
+  <br>
+  <br>
+  <ion-card>
+    <div style="text-align: center; background-color: #8a2be2; height: 45px;">
+      <br>
+      <ion-label style="font-size: 18px; color:white;">Inicio de Sesión</ion-label>
+    </div>
+    <br>
+    <ion-item>
+      <ion-input type="tel" maxlength="10" minlength="10" [(ngModel)]="cedula" placeholder="Cédula"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [type]="hidePass ? 'text' : 'password'" [(ngModel)]="password" placeholder="Contraseña"></ion-input>
+      <ion-button style="border-radius: 20px;" shape="round" color='light' (click)="hidePass = !hidePass"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass" type="button">
+        <ion-icon slot="icon-only" [name]="hidePass ? 'eye' : 'eye-off'"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <br>
+    <br>
+    <ion-button color="tertiary" (click)="onLogin()">
+      <ion-icon slot="start" name="log-in"></ion-icon>
+      Iniciar Sesión
+    </ion-button>
+    <br>
+    <br>
+    <br>
+    <ion-button color="light" routerLink="/new-account">
+      <ion-icon slot="start" name="person-add"></ion-icon>
+      Registrarse
+    </ion-button>
+    <br>
+    <br>
+    <ion-button color="light" routerLink="/rest-password">
+      <ion-icon slot="start" name="key"></ion-icon>
+      Recuperar Contraseña
+    </ion-button>
+    <br>
+    <br>
+    <br>
+    <br>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuO/o/sugerencias"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Nueva Sugerencia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+  <br>
+  <br>
+  <ion-item>
+    <ion-label position="stacked"><b>Paciente</b></ion-label>
+    <ion-select [(ngModel)]='pacienteSel'>
+      <ion-select-option *ngFor="let paciente of pacientes" [value]='paciente'>{{paciente.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <br>
+  <ion-card>
+    <ion-item>
+      <ion-textarea rows="10" cols="20" placeholder="Escriba la sugerencia aqui..." [(ngModel)]="sugerenciaText"></ion-textarea>
+    </ion-item>
+  </ion-card>
+  <br>
+  <br>
+  <ion-button  color="tertiary" (click)="saveSugerencia()" >
+    <ion-icon slot="start" name="send"></ion-icon>
+    Enviar</ion-button>
+</ion-content>

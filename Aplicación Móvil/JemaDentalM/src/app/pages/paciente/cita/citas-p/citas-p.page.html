@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text=""  defaultHref="/menuP"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+     Citas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div style="text-align: center;"> 
+    <ion-button color="tertiary" type="button" (click)="alertCita()"> 
+      <ion-icon slot="start" name="add"></ion-icon>
+      Registrar Cita</ion-button>
+  </div>
+  <br>
+  <ion-item-sliding *ngFor="let cita of this.citas" style="color: black;" >
+    <ion-item style="color: black;" >
+      <ion-label style="color: black;">
+        <h2 style="color:blueviolet;"><b> {{cita.fecha}} &nbsp;&nbsp; {{cita.hora}} </b></h2>
+        <p style="color: black;">
+          <b> Odontólogo: </b> {{cita.nameodontologo | titlecase}}
+      <br>
+      <b style="color: mediumvioletred;">Estado: </b> {{cita.estado | titlecase}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end" *ngIf='cita.estado ==="pendiente"'>
+      <ion-item-option color="light" >
+        <ion-icon slot="icon-only" name="create" (click)="onEdit(cita)"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" >
+        <ion-icon slot="icon-only" name="trash" (click)="onDelete(cita)"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content> 

@@ -1,0 +1,41 @@
+.imagenUser {
+    height:150px;
+    width: 150px;
+    border-radius: 50%;
+  }
+  #header {
+    height:150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 0px auto;
+  }
+  
+  ion-fab {
+    position: relative;
+  }
+  
+  ion-fab[bottom][edge] {
+    bottom: -70%;
+    left: 60%;
+  }
+  
+
+  .avatar-upload {
+    text-align: center;
+    }
+    .avatar-upload .avatar-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0px auto;
+
+    }
+    .avatar-upload .avatar-preview>div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+    .item-has-focus{--highlight-background: #e2e2e2;}

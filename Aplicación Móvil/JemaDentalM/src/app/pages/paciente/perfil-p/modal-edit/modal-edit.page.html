@@ -1,0 +1,31 @@
+<ion-header>
+  <div style="text-align: center; background-color: blueviolet; height: 45px;">
+    <br>
+    <ion-label style="font-size: 18px; color:white;">{{title}}</ion-label>
+  </div>
+</ion-header>
+
+<ion-content overflow-scroll="false">
+  <div *ngIf="this.isTelf == true || this.isName == true ">
+    <form [formGroup]="nameForm">
+      <ion-item *ngIf="this.isName == true">
+        <ion-input formControlName="data" type="text"></ion-input>
+        <ion-button size="medium" [disabled]="nameForm.invalid" (click)="this.saveData()">Guardar
+        </ion-button>
+      </ion-item>
+      <ion-item *ngIf="this.isTelf == true" type="tel">
+        <ion-input maxlength="10" minlength="7" formControlName="data"></ion-input>
+        <ion-button size="medium" [disabled]="nameForm.invalid" (click)="this.saveData()">Guardar </ion-button>
+      </ion-item>
+    </form>
+  </div>
+  <div *ngIf="this.isEmail == true" style="text-align: center;">
+    <form [formGroup]="emailForm">
+      <ion-item>
+        <ion-input formControlName="email"></ion-input>
+        <ion-button size="medium" (click)="this.saveData()">Guardar
+        </ion-button>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

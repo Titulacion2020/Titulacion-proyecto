@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/menuP"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Sugerencias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <br>
+  <ion-item *ngFor="let sugerencia of sugerencias" style="color: black;">
+    <p>
+      <a><b>{{sugerencia.fechaSugerencia | date:'dd/MM/yyyy HH:mm:ss'}}</b></a>
+      <br>
+      <br>
+      <b>Odontólogo: </b> {{sugerencia.nombreOdont}}
+      <br>
+      <b>Sugerencia: </b> {{sugerencia.sugerencia}}
+      <br>
+    </p>
+  </ion-item>
+  <br>
+  <br>
+  <br>
+  <br>
+</ion-content>
