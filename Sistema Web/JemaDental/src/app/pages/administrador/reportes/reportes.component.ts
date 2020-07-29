@@ -278,8 +278,6 @@ export class ReportesComponent implements OnInit {
 
 		  let data = [];
 		  for(let i = 0; i < this.dataSource.data.length; i++){
-      const element = this.dataSource.data[i];
-      this.dataSource.data[i]['fechaCita'] = this.reportService.formatDate(new Date(element['fechaCita']));
 			var nombre= `${this.dataSource.data[i]['nombrePaciente']}`
 			var citas= this.dataSource.data[i]['numeroCitas']
 			data.push({y:Number.parseInt(citas),label:nombre});
@@ -341,8 +339,6 @@ export class ReportesComponent implements OnInit {
 		   let data = [];
 
 		  for(let i = 0; i < this.dataSource.data.length; i++){
-      const element = this.dataSource.data[i];
-      this.dataSource.data[i]['fechaCitaO'] = this.reportService.formatDate(new Date(element['fechaCitaO']));
 			var nombre= `${this.dataSource.data[i]['nombreOdontologo']}`
 			var citas= this.dataSource.data[i]['numeroCitas']
 			data.push({y:Number.parseInt(citas),label:nombre});
@@ -428,17 +424,20 @@ export class ReportesComponent implements OnInit {
 
   exportTablePacientes() {
 
-    let headers = ['No', 'CI. Paciente', 'Nombre del Paciente','Tipo de Seguro','Numero de Citas']
+    let headers = ['No', 'Fecha', 'CI. Paciente', 'Nombre del Paciente','Tipo de Seguro','Numero de Citas']
     let body = [];
      
      for(let i = 0; i < this.dataSource.data.length; i++){
+      const element = this.dataSource.data[i];
+      this.dataSource.data[i]['fechaCita'] = this.reportService.formatDate(new Date(element['fechaCita']));
        var num = `${i+1}`;
+       var fech = `${this.dataSource.data[i]['fechaCita']}`;
        var cedul= `${this.dataSource.data[i]['cedulaPaciente']}`;
        var nombre= `${this.dataSource.data[i]['nombrePaciente']}`
        var seguro = `${this.dataSource.data[i]['seguro']}`;
        var citas = `${this.dataSource.data[i]['numeroCitas']}`;
    
-       let data = new Array(num,cedul,nombre,seguro,citas);
+       let data = new Array(num,fech,cedul,nombre,seguro,citas);
        body.push(data);
      }
     this.reportService.exportToPdf(headers,body,'pacientesReport', 'Reporte de Pacientes atendidos');
@@ -446,17 +445,20 @@ export class ReportesComponent implements OnInit {
 
   exportTableOdontologos() {
 
-    let headers = ['No', 'CI. Odontólogo', 'Nombre del Odontólogo','Especialidad','N° Citas Atendidas']
+    let headers = ['No', 'Fecha', 'CI. Odontólogo', 'Nombre del Odontólogo','Especialidad','N° Citas Atendidas']
     let body = [];
      
      for(let i = 0; i < this.dataSource.data.length; i++){
+      const element = this.dataSource.data[i];
+      this.dataSource.data[i]['fechaCitaO'] = this.reportService.formatDate(new Date(element['fechaCitaO']));
        var num = `${i+1}`;
+       var fech = `${this.dataSource.data[i]['fechaCitaO']}`;
        var cedul= `${this.dataSource.data[i]['cedulaOdontologo']}`;
        var nombre= `${this.dataSource.data[i]['nombreOdontologo']}`
        var seguro = `${this.dataSource.data[i]['especialidad']}`;
        var citas = `${this.dataSource.data[i]['numeroCitas']}`;
    
-       let data = new Array(num,cedul,nombre,seguro,citas);
+       let data = new Array(num,fech,cedul,nombre,seguro,citas);
        body.push(data);
      }
 

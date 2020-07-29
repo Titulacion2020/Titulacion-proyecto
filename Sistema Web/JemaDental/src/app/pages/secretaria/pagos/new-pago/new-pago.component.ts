@@ -172,6 +172,7 @@ export class NewPagoComponent implements OnInit {
             this.pagoForm.get('valorPendiente').setValue(this.totalPendiente);
             this.editable = true;
           }else{
+            this.editable = true;
             this.pagoForm.get('ultimoValorCancelado').setValue(0);
             this.pagoForm.get('valorPendiente').setValue(val.precio);    
           }

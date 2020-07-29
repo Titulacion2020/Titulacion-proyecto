@@ -47,7 +47,7 @@
                 <br>
             </div>
             <br>
-            <button mat-flat-button color="primary" type="submit">
+            <button mat-flat-button color="primary" type="submit" [disabled]="reportForm.invalid">
              GENERAR REPORTE
           </button>
         </div>
@@ -154,7 +154,7 @@
                     </ng-container>
                     <ng-container matColumnDef="fechaCita">
                         <th mat-header-cell *matHeaderCellDef>Fecha</th>
-                        <td mat-cell *matCellDef="let element"> {{element.fechaCita}}</td>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaCita | date: "dd/M/yyyy"}}</td>
                     </ng-container>
                     <ng-container matColumnDef="cedulaPaciente">
                         <th mat-header-cell *matHeaderCellDef> CI. Paciente</th>
@@ -206,7 +206,7 @@
                     </ng-container>
                     <ng-container matColumnDef="fechaCitaO">
                         <th mat-header-cell *matHeaderCellDef>Fecha </th>
-                        <td mat-cell *matCellDef="let element"> {{element.fechaCitaO}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.fechaCitaO | date: "dd/M/yyyy"}} </td>
                     </ng-container>
                     <ng-container matColumnDef="cedulaOdontologo">
                         <th mat-header-cell *matHeaderCellDef> CI. Odontólogo </th>

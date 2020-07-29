@@ -288,7 +288,7 @@ export class EditCitaComponent implements OnInit {
 
     if (newdata.estado === 'agendada' || newdata.estado === 'confirmada') {
       if (this.dataPaciente && this.dataPaciente.token) {
-        const msg = 'Su cita fué ' + newdata.estado + ' exitosamente.';
+        const msg = 'Su cita fue ' + newdata.estado + ' exitosamente.';
         this.fcmService.sendPostRequest(msg, this.dataPaciente.token);
       }
     }

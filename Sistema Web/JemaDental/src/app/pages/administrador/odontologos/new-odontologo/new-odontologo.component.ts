@@ -31,7 +31,7 @@ export class NewOdontologoComponent implements OnInit {
     id: new FormControl(null),
     nombre: new FormControl('', Validators.required),
     especialidad: new FormControl('', Validators.required),
-    cedula: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    cedula: new FormControl('', [Validators.required, Validators.minLength(9)]),
     telefono: new FormControl('', [Validators.required, Validators.minLength(7)]),
     email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
     foto: new FormControl(null),
@@ -94,7 +94,7 @@ export class NewOdontologoComponent implements OnInit {
 
     if (existeCedOdont || existeCedPacient || existeCedUser) {
       this.Odonform.get('cedula').setErrors({ repeatOdonto: true });
-      this.toastr.warning('El número de cédula ya se encuentra registado, vuelva a intentar', 'MENSAJE');
+      this.toastr.warning('El número de identidad ya se encuentra registado, vuelva a intentar', 'MENSAJE');
     }
   }
 
@@ -280,8 +280,8 @@ export class NewOdontologoComponent implements OnInit {
 
   msgValidateCedula() {
     return this.Odonform.get('cedula').hasError('required') ? 'Campo obligatorio' :
-      this.Odonform.get('cedula').hasError('minlength') ? 'La cédula debe tener 10 digitos' :
-        this.Odonform.get('cedula').hasError('repeatOdonto') ? 'La cédula ya se encuentra registrada' :
+      this.Odonform.get('cedula').hasError('minlength') ? 'La identidad debe tener minimo 9 digitos' :
+        this.Odonform.get('cedula').hasError('repeatOdonto') ? 'Número de identidad ya registrado' :
           '';
   }
 
