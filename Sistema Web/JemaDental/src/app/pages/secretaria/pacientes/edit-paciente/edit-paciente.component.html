@@ -43,7 +43,8 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field class="inputData">
-                    <input matInput formControlName="cedula" placeholder="Número de cédula" maxlength="10" (keydown)="check($event)" (keyup)="validateCedula()">
+                    <input matInput formControlName="cedula" placeholder="Número de identificación" maxlength="15" (keyup)="validateCedula()"
+                    onkeyup="this.value=this.value.toUpperCase().trim()">
                     <mat-error *ngIf="pacienteForm.invalid">{{getErrorMessageC()}}</mat-error>
                 </mat-form-field>
             </mat-grid-tile>

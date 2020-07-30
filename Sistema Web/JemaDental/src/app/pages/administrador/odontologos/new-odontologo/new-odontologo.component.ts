@@ -281,7 +281,7 @@ export class NewOdontologoComponent implements OnInit {
   msgValidateCedula() {
     return this.Odonform.get('cedula').hasError('required') ? 'Campo obligatorio' :
       this.Odonform.get('cedula').hasError('minlength') ? 'La identidad debe tener minimo 9 digitos' :
-        this.Odonform.get('cedula').hasError('repeatOdonto') ? 'Número de identidad ya registrado' :
+        this.Odonform.get('cedula').hasError('repeatOdonto') ? 'Número de identificación ya registrado' :
           '';
   }
 

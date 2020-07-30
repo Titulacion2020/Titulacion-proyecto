@@ -28,7 +28,7 @@ export class EditPacienteComponent implements OnInit {
     seguro: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
     hClinica: new FormControl(''),
-    cedula: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    cedula: new FormControl('', [Validators.required, Validators.minLength(9)]),
     telefono: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
     foto: new FormControl(''),
@@ -61,7 +61,7 @@ export class EditPacienteComponent implements OnInit {
 
     if ((cedulaOld !== cedula && existeCedOdont) || existeCedPacient || existeCedUser) {
       this.pacienteForm.get('cedula').setErrors({ repeatOdonto: true });
-      this.toastr.warning('El número de cédula ya se encuentra registrado, vuelva a intentar', 'MENSAJE');
+      this.toastr.warning('El número de identidad ya se encuentra registrado, vuelva a intentar', 'MENSAJE');
     }
   }
 
@@ -140,8 +140,8 @@ export class EditPacienteComponent implements OnInit {
 
   getErrorMessageC() {
     return this.pacienteForm.get('cedula').hasError('required') ? 'Campo obligatorio' :
-      this.pacienteForm.get('cedula').hasError('minlength') ? 'La cédula debe tener 10 digitos' :
-        this.pacienteForm.get('cedula').hasError('repeatOdonto') ? 'La cédula ya se encuentra registrada' :
+      this.pacienteForm.get('cedula').hasError('minlength') ? 'La identidad debe tener 9 digitos' :
+        this.pacienteForm.get('cedula').hasError('repeatOdonto') ? 'Número de identificación ya registrado' :
             '';
   }
   getErrorMessageHC() {

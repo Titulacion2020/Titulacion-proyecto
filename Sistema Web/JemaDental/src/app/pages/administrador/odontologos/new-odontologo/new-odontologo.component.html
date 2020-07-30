@@ -42,7 +42,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="inputWidth">
-          <input matInput formControlName="cedula" placeholder="Número de cédula" maxlength="15"
+          <input matInput formControlName="cedula" placeholder="Número de identificación" maxlength="15"
            (keyup)="validateCedula()" onkeyup="this.value=this.value.toUpperCase().trim()">
           <mat-error *ngIf="Odonform.invalid">{{msgValidateCedula()}}</mat-error>
         </mat-form-field>

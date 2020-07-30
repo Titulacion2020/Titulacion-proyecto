@@ -52,7 +52,7 @@ export class ResponderSolicitudComponent implements OnInit {
           if (paciente) {
             if (paciente.token) {
               // Notification
-              const msg = 'Su solicitud fué aprobada exitosamente.';
+              const msg = 'Su solicitud fue aprobada exitosamente.';
               this.fcmService.sendPostRequest(msg, paciente.token);
             }
           }
@@ -69,7 +69,7 @@ export class ResponderSolicitudComponent implements OnInit {
           if (paciente) {
             if (paciente.token) {
               // Notification
-              const msg = 'Su solicitud fué negada.';
+              const msg = 'Su solicitud fue negada.';
               this.fcmService.sendPostRequest(msg, paciente.token);
             }
           }
