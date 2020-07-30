@@ -14,7 +14,7 @@
     </div>
     <br>
     <ion-item>
-      <ion-input type="tel" maxlength="10" minlength="10" [(ngModel)]="cedula" placeholder="Cédula"></ion-input>
+      <ion-input type="text" maxlength="15" minlength="9" [(ngModel)]="cedula" placeholder="Número de Identificación"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input [type]="hidePass ? 'text' : 'password'" [(ngModel)]="password" placeholder="Contraseña"></ion-input>
