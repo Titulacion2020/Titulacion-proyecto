@@ -60,10 +60,8 @@ export class NewAccountPage implements OnInit {
   ngOnInit() { }
 
   buscarUsuario(evento) {
-    console.log(this.cedula);
-    
 
-    if (!this.cedula || this.cedula.length < 9) {
+    if (!this.cedula || this.cedula.length < 10) {
 
       this.pExist = false;
       this.oExist = false;
@@ -106,12 +104,6 @@ export class NewAccountPage implements OnInit {
       // User No existe
       this.pExist = false;
       this.oExist = false;
-      this.telefono = '';
-      this.registroForm.reset();
-      this.registroForm.get('nombre').setValue('');
-      this.registroForm.get('confirmPass').setValue('');
-      this.registroForm.get('pass').setValue('');
-      this.registroForm.get('email').setValue('');
     }
   }
 
@@ -123,11 +115,11 @@ export class NewAccountPage implements OnInit {
 
     // Mensajes de validación de los Input
     if (this.cedula.trim().length === 0) {
-      this.presentToastE('Ingrese su número de identificación');
+      this.presentToastE('Ingrese su número de cédula');
       return;
     }
-    if (this.cedula.length < 9) {
-      this.presentToastE('Número de identificación incorrecto');
+    if (this.cedula.length < 10) {
+      this.presentToastE('Número de cédula incorrecto');
       return;
     }
     if (this.nombre.trim().length === 0) {

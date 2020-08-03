@@ -17,8 +17,8 @@
       <br>
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item>
-          <ion-input [ngModelOptions]="{standalone: true}" placeholder='Número de Identificación'
-            (ionChange)="buscarUsuario($event)" type="text" maxlength="15" minlength="9" [(ngModel)]="cedula">
+          <ion-input [ngModelOptions]="{standalone: true}" placeholder='Número de cédula'
+            (ionChange)="buscarUsuario($event)" type="tel" maxlength="10" minlength="10" [(ngModel)]="cedula">
           </ion-input>
         </ion-item>
         <ion-item>

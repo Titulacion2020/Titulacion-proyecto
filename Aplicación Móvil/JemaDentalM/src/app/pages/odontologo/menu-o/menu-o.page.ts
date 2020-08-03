@@ -1,51 +1,50 @@
-import { PacienteInterface } from 'src/app/interfaces/paciente-model';
+import { LoadingController, MenuController } from '@ionic/angular';
+import { OdontologoInterface } from 'src/app/interfaces/odontologo-model';
 import { AuthService } from './../../../services/auth/auth.service';
-import { PacienteService } from './../../../services/paciente/paciente.service';
+import { OdontologoService } from './../../../services/odontologo/odontologo.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { Platform, LoadingController } from '@ionic/angular';
 import { Router, RouterEvent } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-p',
-  templateUrl: './menu-p.page.html',
-  styleUrls: ['./menu-p.page.scss'],
+  selector: 'app-menu-o',
+  templateUrl: './menu-o.page.html',
+  styleUrls: ['./menu-o.page.scss'],
 })
-export class MenuPPage implements OnInit {
+export class MenuOPage implements OnInit {
 
   pages = [
     {
       title: 'Inicio',
-      url: '/menuP/p/inicio',
+      url: '/menuO/o/inicio',
       icon: 'home'
     },
     {
       title: 'Perfil',
-      url: '/menuP/p/perfil',
+      url: '/menuO/o/perfil',
       icon: 'contact'
     },
     {
       title: 'Nosotros',
-      url: '/menuP/p/nosotros',
+      url: '/menuO/o/nosotros',
       icon: 'people'
     },
     {
-      title: 'Contáctanos',
-      url: '/menuP/p/contactanos',
+      title: 'Contactanos',
+      url: '/menuO/o/contactanos',
       icon: 'call'
     }
   ];
-  public userEmail: string = null;
-  public userPaciente: PacienteInterface = {};
   selectedPath = '';
+  public userEmail: string = null;
+  public userOdontologo: OdontologoInterface = {};
   constructor(
     public router: Router,
     private AFauth: AngularFireAuth,
-    public pacientService: PacienteService,
     private authService: AuthService,
-    private loadingController: LoadingController
+    public odontService: OdontologoService,
+    private loadingController: LoadingController,
+    public menuCtrl: MenuController,
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -56,10 +55,10 @@ export class MenuPPage implements OnInit {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
         this.userEmail = auth.email;
-        this.pacientService.getOnePaciente(this.userEmail).subscribe(user => {
+        this.odontService.getOneOdontologobyE(this.userEmail).subscribe(user => {
           user.map(res => {
-            this.userPaciente = res;
-            this.pacientService.pacienteSelected = res;
+            this.userOdontologo = res;
+            this.odontService.odontologoSelected = res;
           });
         });
       }
@@ -81,7 +80,7 @@ export class MenuPPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    this.router.navigateByUrl('/inicio');
+    this.router.navigate(['/inicio']);
     // console.log('Loading dismissed!');
   }
 
